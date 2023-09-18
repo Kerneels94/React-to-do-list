@@ -3,6 +3,14 @@
 - Open terminal
 - git clone https://github.com/Kerneels94/React-to-do-list.git
 - Run npm run dev
+- Open your browser and go to http://127.0.0.1:5173/
+
+## Functionality
+- Create
+- Delete
+- Update
+## Api used
+- https://todos.appsquare.io
 
 # React + Vite
 
