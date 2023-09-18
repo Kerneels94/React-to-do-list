@@ -6,9 +6,11 @@
 - Open your browser and go to http://127.0.0.1:5173/
 
 ## Functionality
-- Create
-- Delete
-- Update
+THe app provides you with the ability to 
+- Create a todo item
+- Delete a todo item
+- Update a todo item (If you made a spelling mistake for some reason)
+
 ## Api used
 - https://todos.appsquare.io
 
