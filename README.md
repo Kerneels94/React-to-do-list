@@ -1,7 +1,8 @@
 # React to do list
 ## Setup
 - Open terminal
-- git clone 
+- git clone https://github.com/Kerneels94/React-to-do-list.git
+- Run npm run dev
 
 # React + Vite
 
