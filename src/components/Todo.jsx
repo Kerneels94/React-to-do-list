@@ -116,8 +116,8 @@ const Todo = () => {
 
   return (
     <>
-      <div className="todo-container flex h-full flex-col space-y-10 p-10 max-w-3xl mx-auto mt-5 shadow-xl rounded-b-md">
-        <div className="todo-header flex flex-col items-center justify-between">
+      <div className="flex h-full flex-col space-y-10 p-10 max-w-3xl mx-auto mt-5 shadow-xl rounded-b-md">
+        <div className="flex flex-col items-center justify-between">
           <h2 className="text-xl italic">A list that must be done!</h2>
           <p>
             Add a list of items you would like to{" "}
@@ -127,13 +127,14 @@ const Todo = () => {
 
         {/* Form */}
         <TodoForm
+          userInputField={userInputField}
           setUserInputField={setUserInputField}
           deleteTodoItem={deleteTodoItem}
           addTodoItemToList={addTodoItemToList}
         />
 
         {/* Todo Items */}
-        <div className="todo-items w-auto h-auto p-2 flex flex-col items-center justify-center bg-zinc-800 text-white rounded-lg dark:bg-white dark:text-zinc-800 shadow-xl">
+        <div className="w-auto h-auto p-2 flex flex-col items-center justify-center bg-zinc-800 text-white rounded-lg dark:bg-white dark:text-zinc-800 shadow-xl">
           <ul>
             {/* if the length of the list with the todo items is === 0 display a messege else display a empty string */}
             {list.length === 0 ? <p>No to do items yet</p> : ""}
