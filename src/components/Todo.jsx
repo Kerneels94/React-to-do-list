@@ -14,10 +14,11 @@ const Todo = () => {
   // Editing state
   const [editingValue, setEditingValue] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   let data = {
     title: userInputField,
-    completed: false,
+    completed: checked,
   };
 
   // Get data from api endpoint
@@ -53,7 +54,7 @@ const Todo = () => {
         ...list,
         {
           todoItemName: userInputField,
-          completed: false,
+          completed: checked,
         },
       ];
     });
@@ -85,7 +86,7 @@ const Todo = () => {
     // Update data object with the edited value
     data = {
       title: editingValue,
-      completed: false,
+      completed: checked,
     };
 
     // Using Axios patch request -> passing in the id so that react knows what id to update + the updated data
@@ -107,6 +108,13 @@ const Todo = () => {
 
     // Set editing state to false
     setIsEditing(false);
+  };
+
+  // Checkbox function
+  const handleCheckbox = (e) => {
+    if (e.target.checked) {
+      setChecked(true);
+    }
   };
 
   // Use effect
@@ -151,6 +159,8 @@ const Todo = () => {
                     setEditingValue={setEditingValue}
                     isEditing={isEditing}
                     setIsEditing={setIsEditing}
+                    handleCheckbox={handleCheckbox}
+                    checked={checked}
                   />
                 </>
               );

@@ -9,6 +9,8 @@ const TodoList = ({
   editTodoData,
   setIsEditing,
   isEditing,
+  handleCheckbox,
+  checked,
 }) => {
   return (
     <>
@@ -22,7 +24,7 @@ const TodoList = ({
               value={editingValue}
               onChange={(e) => setEditingValue(e.target.value)}
             />
-            {title}
+            <p key={id}>{title}</p>
           </label>
           <div className="button-container flex gap-2">
             <button
@@ -37,8 +39,8 @@ const TodoList = ({
       ) : (
         <li className="flex flex-row gap-1 items-center justify-center">
           <label className="flex gap-1">
-            <input type="checkbox" />
-            {title}
+            <input type="checkbox" onChange={handleCheckbox} value={checked} />
+            <p key={id}>{title}</p>
           </label>
           <div className="button-container flex flex-1">
             <button

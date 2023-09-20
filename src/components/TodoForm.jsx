@@ -6,6 +6,7 @@ const TodoForm = ({ userInputField, addTodoItemToList, setUserInputField }) => {
       <form>
         <div className="flex items-center justify-around gap-x-2">
           <input
+            type="text"
             className="user-input-field w-1/2 border border-none px-2 py-1 ring-1 ring-blue-300 focus:outline-none focus:ring-1 focus:ring-zinc-800 rounded-sm"
             placeholder="Add a new task"
             aria-label="userInput"
