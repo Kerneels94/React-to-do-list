@@ -127,11 +127,12 @@ const Todo = () => {
   return (
     <>
       <div
-        className="flex h-full flex-col space-y-10 p-10 max-w-3xl mx-auto mt-5 shadow-xl rounded-b-md 
-      sm:flex sm:flex-col sm:items-center sm: justify-between"
+        className="h-full space-y-10 p-10 max-w-3xl mx-auto mt-5 shadow-xl rounded-b-md 
+      sm:flex sm:flex-col sm:items-center sm:justify-between 
+      lg:flex lg:flex-col lg:items-center lg:justify-between xl:flex xl:flex-col xl:items-center xl:justify-between"
       >
         <div className="flex flex-col items-center justify-between">
-          <h2 className="text-xl italic">A list that must be done!</h2>
+          <h2 className="text-xl italic">Todo App</h2>
           <p>
             Add a list of items you would like to{" "}
             <span className="italic text-lg text-blue-300">get done today</span>
