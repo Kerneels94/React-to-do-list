@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import TodoForm from "./TodoForm";
 import axios from "axios";
 import TodoList from "./TodoList";
-// Token would be added to a .env file and then imported into the component in a real world application
+// Token would be added to a .env file and accessed from the server in a real world application
 const token =
   "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTM5OTY0NzksImlkIjoiZTcwZTcxZjEtNGNhMC0xMWVlLTgwZDUtMTJiNWY3OWJkNDUzIn0.HQdquK9YTGid7u0bhj9RBylIA7UkCcoQ1LvrnC1YFOOmorQ81HiZZZ4MzHv8N0OopZ2bf9QsWUM9jHr3zm-LAw";
 const url = "https://todos.appsquare.io";
@@ -11,9 +11,10 @@ const Todo = () => {
   // Create state variables
   const [userInputField, setUserInputField] = useState("");
   const [list, setList] = useState([]);
-  // Editing state
+  // Editing state variables
   const [editingValue, setEditingValue] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
+  // Checkbox state variable
   const [checked, setChecked] = useState(false);
 
   // Data object passed to the api endpoint
@@ -109,7 +110,7 @@ const Todo = () => {
       console.log(error);
     }
 
-    // Update the list -> Make a compy of the list - adding the new edited value to the object
+    // Update the list -> Make a copy of the list - adding the new edited value to the object
     setList([...list, { id: id, title: editingValue, completed: false }]);
 
     // Set editing state to false
@@ -125,7 +126,10 @@ const Todo = () => {
 
   return (
     <>
-      <div className="flex h-full flex-col space-y-10 p-10 max-w-3xl mx-auto mt-5 shadow-xl rounded-b-md">
+      <div
+        className="flex h-full flex-col space-y-10 p-10 max-w-3xl mx-auto mt-5 shadow-xl rounded-b-md 
+      sm:flex sm:flex-col sm:items-center sm: justify-between"
+      >
         <div className="flex flex-col items-center justify-between">
           <h2 className="text-xl italic">A list that must be done!</h2>
           <p>
