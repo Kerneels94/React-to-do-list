@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import TodoForm from "./TodoForm";
 import axios from "axios";
 import TodoList from "./TodoList";
-
+// Token would be added to a .env file and then imported into the component in a real world application
 const token =
   "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTM5OTY0NzksImlkIjoiZTcwZTcxZjEtNGNhMC0xMWVlLTgwZDUtMTJiNWY3OWJkNDUzIn0.HQdquK9YTGid7u0bhj9RBylIA7UkCcoQ1LvrnC1YFOOmorQ81HiZZZ4MzHv8N0OopZ2bf9QsWUM9jHr3zm-LAw";
 const url = "https://todos.appsquare.io";
@@ -16,10 +16,16 @@ const Todo = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [checked, setChecked] = useState(false);
 
+  // Data object passed to the api endpoint
   let data = {
     title: userInputField,
     completed: checked,
   };
+
+  // Use effect
+  useEffect(() => {
+    getDataFromApi();
+  }, []);
 
   // Get data from api endpoint
   const getDataFromApi = async () => {
@@ -32,7 +38,7 @@ const Todo = () => {
     setList(res.data.todos);
   };
 
-  // Add to do item 
+  // Add to do item
   const addTodoItemToList = async () => {
     // Using a post request post the data to the api endpoint
     try {
@@ -116,11 +122,6 @@ const Todo = () => {
       setChecked(true);
     }
   };
-
-  // Use effect
-  useEffect(() => {
-    getDataFromApi();
-  }, []);
 
   return (
     <>
