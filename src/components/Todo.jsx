@@ -32,7 +32,7 @@ const Todo = () => {
     setList(res.data.todos);
   };
 
-  // The add to do button will add the userInput value collected from the state to the todoItem array
+  // Add to do item 
   const addTodoItemToList = async () => {
     // Using a post request post the data to the api endpoint
     try {
