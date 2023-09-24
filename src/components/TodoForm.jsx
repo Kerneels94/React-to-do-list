@@ -17,7 +17,7 @@ const TodoForm = ({ userInputField, addTodoItemToList, setUserInputField }) => {
           />
           <button
             className="px-2 py-2 text-xl hover:text-blue-300 hover:transition-all hover:duration-100 focus:outline-none focus:ring-1"
-            type="button"
+            type="submit"
             aria-label="addTodoButton"
             onClick={addTodoItemToList}
           >
