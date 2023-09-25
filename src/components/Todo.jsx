@@ -30,13 +30,17 @@ const Todo = () => {
 
   // Get data from api endpoint
   const getDataFromApi = async () => {
-    let res = await axios.get(`${url}/todos`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    });
-    setList(res.data.todos);
+    try {
+      let res = await axios.get(`${url}/todos`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      setList(res.data.todos);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // Add to do item
