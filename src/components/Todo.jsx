@@ -26,7 +26,7 @@ const Todo = () => {
   // Use effect
   useEffect(() => {
     getDataFromApi();
-  }, [list]);
+  }, []);
 
   // Get data from api endpoint
   const getDataFromApi = async () => {
