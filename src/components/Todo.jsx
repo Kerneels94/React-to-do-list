@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import TodoForm from "./TodoForm";
-import axios from "axios";
 import TodoList from "./TodoList";
+import axios from "axios";
 // Token would be added to a .env file and accessed from the server in a real world application
 const token =
   "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTM5OTY0NzksImlkIjoiZTcwZTcxZjEtNGNhMC0xMWVlLTgwZDUtMTJiNWY3OWJkNDUzIn0.HQdquK9YTGid7u0bhj9RBylIA7UkCcoQ1LvrnC1YFOOmorQ81HiZZZ4MzHv8N0OopZ2bf9QsWUM9jHr3zm-LAw";
@@ -26,7 +26,7 @@ const Todo = () => {
   // Use effect
   useEffect(() => {
     getDataFromApi();
-  }, []);
+  }, [list]);
 
   // Get data from api endpoint
   const getDataFromApi = async () => {
