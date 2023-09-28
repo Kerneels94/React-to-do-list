@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+// import { FaPlusCircle } from "react-icons/fa";
+// import { FaTrash, FaPenSquare } from "react-icons/fa";
+
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 import axios from "axios";
@@ -23,11 +26,6 @@ const Todo = () => {
     completed: checked,
   };
 
-  // Use effect
-  useEffect(() => {
-    getDataFromApi();
-  }, []);
-
   // Get data from api endpoint
   const getDataFromApi = async () => {
     try {
@@ -44,7 +42,8 @@ const Todo = () => {
   };
 
   // Add to do item
-  const addTodoItemToList = async () => {
+  const addTodoItemToList = async (e) => {
+    e.preventDefault();
     // Using a post request post the data to the api endpoint
     try {
       await axios.post(`${url}/todos`, data, {
@@ -60,15 +59,14 @@ const Todo = () => {
     }
 
     // Update setter function of useState with the userInputValue
-    setList(() => {
-      return [
-        ...list,
-        {
-          todoItemName: userInputField,
-          completed: checked,
-        },
-      ];
-    });
+    setList([
+      ...list,
+      {
+        title: userInputField,
+        completed: checked,
+        id: id,
+      },
+    ]);
 
     // Clear input field
     setUserInputField("");
@@ -84,12 +82,12 @@ const Todo = () => {
           "Content-Type": "application/json",
         },
       });
-
       // Call get data function
       getDataFromApi();
     } catch (error) {
       console.log(error);
     }
+    // setList(list.filter((item) => item.id !== id));
   };
 
   // Edit to do function
@@ -128,13 +126,14 @@ const Todo = () => {
     }
   };
 
+  // Use effect
+  useEffect(() => {
+    getDataFromApi();
+  }, []);
+
   return (
     <>
-      <div
-        className="h-full space-y-10 p-10 max-w-3xl mx-auto mt-5 shadow-xl rounded-b-md 
-      sm:flex sm:flex-col sm:items-center sm:justify-between 
-      lg:flex lg:flex-col lg:items-center lg:justify-between xl:flex xl:flex-col xl:items-center xl:justify-between"
-      >
+      <div className="h-full space-y-10 p-10 max-w-3xl mx-auto mt-5 shadow-xl rounded-b-md sm:flex sm:flex-col sm:items-center sm:justify-between lg:flex lg:flex-col lg:items-center lg:justify-between xl:flex xl:flex-col xl:items-center xl:justify-between">
         <div className="flex flex-col items-center justify-between">
           <h2 className="text-xl italic">Todo App</h2>
           <p>
@@ -153,29 +152,27 @@ const Todo = () => {
 
         {/* Todo Items */}
         <div className="w-auto h-auto p-2 flex flex-col items-center justify-center bg-zinc-800 text-white rounded-lg dark:bg-white dark:text-zinc-800 shadow-xl">
-          <ul>
-            {/* if the length of the list with the todo items is === 0 display a messege else display a empty string */}
-            {list.length === 0 ? <p>No to do items yet</p> : ""}
-            {/* Loop through the list of todo items and display a list of items */}
-            {list.map(({ id, title }) => {
-              return (
-                <>
-                  <TodoList
-                    id={id}
-                    title={title}
-                    deleteTodoItem={deleteTodoItem}
-                    editingValue={editingValue}
-                    editTodoData={editTodoData}
-                    setEditingValue={setEditingValue}
-                    isEditing={isEditing}
-                    setIsEditing={setIsEditing}
-                    handleCheckbox={handleCheckbox}
-                    checked={checked}
-                  />
-                </>
-              );
-            })}
-          </ul>
+          {/* if the length of the list with the todo items is === 0 display a messege else display a empty string */}
+          {list.length === 0 && <p>No to do items yet</p>}
+          {/* Loop through the list of todo items and display a list of items */}
+          {list.map(({ id, title }) => {
+            return (
+              <>
+                <TodoList
+                  id={id}
+                  title={title}
+                  deleteTodoItem={deleteTodoItem}
+                  editingValue={editingValue}
+                  editTodoData={editTodoData}
+                  setEditingValue={setEditingValue}
+                  isEditing={isEditing}
+                  setIsEditing={setIsEditing}
+                  handleCheckbox={handleCheckbox}
+                  checked={checked}
+                />
+              </>
+            );
+          })}
         </div>
       </div>
     </>
